@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AudioPlayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -45,17 +45,17 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <ProgressBar x:Name="ProgressIndicator" Value="{Binding Progress}" />
-            <TextBlock x:Name="TimeIndicator" Text="{Binding Time}" />
+            <ProgressBar x:Name="ProgressIndicator" Value="{Binding Progress}" Margin="0,10,0,0" />
+            <TextBlock x:Name="TimeIndicator" Text="{Binding Time}" Margin="252,290,0,0" />
         </Grid>
 
         <!-- Volume Control -->
-        <Slider x:Name="VolumeSlider" Grid.Row="1" Grid.Column="1" Margin="5" Value="{Binding Volume}" />
+        <Slider x:Name="VolumeSlider" Grid.Row="1" Margin="34,362,34,32" Value="{Binding Volume}" Grid.ColumnSpan="2" />
 
         <!-- Add/Remove Playlist Items -->
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
-            <Button x:Name="AddFileButton" Content="Add File" Click="AddFileButton_Click" />
-            <Button x:Name="RemoveFileButton" Content="Remove File" Click="RemoveFileButton_Click" />
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,161,20,5">
+            <Button x:Name="AddFileButton" Content="Add File" Click="AddFileButton_Click" Width="136" />
+            <Button x:Name="RemoveFileButton" Content="Remove File" Click="RemoveFileButton_Click" Width="137" />
         </StackPanel>
     </Grid>
 </Window>

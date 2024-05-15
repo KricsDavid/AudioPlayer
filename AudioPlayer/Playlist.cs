@@ -50,7 +50,7 @@ namespace AudioPlayer
         public void PlayTrack(Track track)
         {
             _currentTrackIndex = _tracks.IndexOf(track);
-            Player.Start();
+            //Player.Start();
         }
 
         public void SavePlaylist(string fileName)
