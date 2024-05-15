@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using System.Windows.Markup;
 
 namespace AudioPlayer
 {
@@ -53,12 +55,25 @@ namespace AudioPlayer
 
         public void SavePlaylist(string fileName)
         {
-            // implement saving playlist to file
+            using (var writer = new StreamWriter("Playlist"))
+            {
+                var xaml = XamlWriter.Save(Tracks);
+                writer.Write(xaml);
+            }
         }
 
         public void LoadPlaylist(string fileName)
         {
-            // implement loading playlist from file
+            using (var reader = new StreamReader("Playlist"))
+            {
+                var xaml = reader.ReadToEnd();
+                //var tracks = (ObservableCollection<Track>)XamlReader.Load("alma");
+                Tracks.Clear();
+               // foreach (var track in tracks)
+                {
+                    //Tracks.Add(track);
+                }
+            }
         }
     }
 }
