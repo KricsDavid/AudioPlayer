@@ -7,6 +7,55 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <!-- Playlist -->
+        <ListBox x:Name="TrackListBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Artist}" Width="100" />
+                        <TextBlock Text="{Binding Title}" Width="200" />
+                        <TextBlock Text="{Binding Length}" Width="50" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Controls -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
+            <Button x:Name="PlayButton" Content="Play" Click="PlayButton_Click" />
+            <Button x:Name="StopButton" Content="Stop" Click="StopButton_Click" />
+            <Button x:Name="ResumeButton" Content="Resume" Click="ResumeButton_Click" />
+            <Button x:Name="PreviousButton" Content="Previous" Click="PreviousButton_Click" />
+            <Button x:Name="NextButton" Content="Next" Click="NextButton_Click" />
+            <Button x:Name="RewindButton" Content="Rewind" Click="RewindButton_Click" />
+        </StackPanel>
+
+        <!-- Progress Indicator -->
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ProgressBar x:Name="ProgressIndicator" Value="{Binding Progress}" />
+            <TextBlock x:Name="TimeIndicator" Text="{Binding Time}" />
+        </Grid>
+
+        <!-- Volume Control -->
+        <Slider x:Name="VolumeSlider" Grid.Row="1" Grid.Column="1" Margin="5" Value="{Binding Volume}" />
+
+        <!-- Add/Remove Playlist Items -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
+            <Button x:Name="AddFileButton" Content="Add File" Click="AddFileButton_Click" />
+            <Button x:Name="RemoveFileButton" Content="Remove File" Click="RemoveFileButton_Click" />
+        </StackPanel>
     </Grid>
 </Window>
